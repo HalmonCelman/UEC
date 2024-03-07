@@ -59,23 +59,23 @@ import vga_pkg::*;
     end
 
     always_comb begin
-        if( hcount < HOR_TOTAL_TIME-1 ) begin
+        if( hcount < HOR_TOTAL_TIME - 1) begin
             hcount_nxt = hcount + 1;
             vcount_nxt = vcount;
         end else begin
             hcount_nxt = '0;
-            if( vcount < VER_TOTAL_TIME-1 ) begin
+            if( vcount < VER_TOTAL_TIME - 1) begin
                 vcount_nxt = vcount + 1;
             end else begin
                 vcount_nxt = '0;
             end
         end
 
-        hsync_nxt = (hcount_nxt >= HOR_SYNC_START && hcount_nxt <= (HOR_SYNC_START + HOR_SYNC_TIME)) ?  1'b1 : 1'b0;
-        hblnk_nxt = (hcount_nxt >= HOR_BLANK_START && hcount_nxt <= (HOR_BLANK_START + HOR_BLANK_TIME)) ?  1'b1 : 1'b0;
+        hsync_nxt = (hcount_nxt >= HOR_SYNC_START && hcount_nxt < (HOR_SYNC_START + HOR_SYNC_TIME)) ?  1'b1 : 1'b0;
+        hblnk_nxt = (hcount_nxt >= HOR_BLANK_START && hcount_nxt < (HOR_BLANK_START + HOR_BLANK_TIME)) ?  1'b1 : 1'b0;
         
-        vsync_nxt = (vcount_nxt >= VER_SYNC_START && vcount_nxt <= (VER_SYNC_START + VER_SYNC_TIME)) ?  1'b1 : 1'b0;
-        vblnk_nxt = (vcount_nxt >= VER_BLANK_START && vcount_nxt <= (VER_BLANK_START + VER_BLANK_TIME)) ?  1'b1 : 1'b0;
+        vsync_nxt = (vcount_nxt >= VER_SYNC_START && vcount_nxt < (VER_SYNC_START + VER_SYNC_TIME)) ?  1'b1 : 1'b0;
+        vblnk_nxt = (vcount_nxt >= VER_BLANK_START && vcount_nxt < (VER_BLANK_START + VER_BLANK_TIME)) ?  1'b1 : 1'b0;
 
     end
 
