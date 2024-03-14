@@ -12,12 +12,7 @@
 module vga_timing (
     input  logic clk,
     input  logic rst,
-    output logic [10:0] vcount,
-    output logic vsync,
-    output logic vblnk,
-    output logic [10:0] hcount,
-    output logic hsync,
-    output logic hblnk
+    vga_if.out vga
 );
 
 import vga_pkg::*;
@@ -40,32 +35,32 @@ import vga_pkg::*;
 
     always_ff @(posedge clk) begin
         if(rst) begin
-            vcount <= '0;
-            vsync <= 1'b0;
-            vblnk <= 1'b0;
+            vga.vcount <= '0;
+            vga.vsync <= 1'b0;
+            vga.vblnk <= 1'b0;
 
-            hcount <= '0;
-            hsync <= 1'b0;
-            hblnk <= 1'b0;
+            vga.hcount <= '0;
+            vga.hsync <= 1'b0;
+            vga.hblnk <= 1'b0;
         end else begin
-            vcount <= vcount_nxt;
-            vsync <= vsync_nxt;
-            vblnk <= vblnk_nxt;
+            vga.vcount <= vcount_nxt;
+            vga.vsync <= vsync_nxt;
+            vga.vblnk <= vblnk_nxt;
 
-            hcount <= hcount_nxt;
-            hsync <= hsync_nxt;
-            hblnk <= hblnk_nxt;
+            vga.hcount <= hcount_nxt;
+            vga.hsync <= hsync_nxt;
+            vga.hblnk <= hblnk_nxt;
         end
     end
 
     always_comb begin
-        if( hcount < HOR_TOTAL_TIME - 1) begin
-            hcount_nxt = hcount + 1;
-            vcount_nxt = vcount;
+        if( vga.hcount < HOR_TOTAL_TIME - 1) begin
+            hcount_nxt = vga.hcount + 1;
+            vcount_nxt = vga.vcount;
         end else begin
             hcount_nxt = '0;
-            if( vcount < VER_TOTAL_TIME - 1) begin
-                vcount_nxt = vcount + 1;
+            if( vga.vcount < VER_TOTAL_TIME - 1) begin
+                vcount_nxt = vga.vcount + 1;
             end else begin
                 vcount_nxt = '0;
             end
