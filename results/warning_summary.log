@@ -1,15 +1,9 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-04-04 15:34:46
+Created: 2024-04-04 18:23:06
 
 ----SYNTHESIS----
 WARNING: [Synth 8-3848] Net vga\.rgb in module/entity vga_timing does not have driver. [rtl/vga_timing.sv:15]
-WARNING: [Synth 8-614] signal 'blank' is read in the process but is not in the sensitivity list [rtl/MouseDisplay.vhd:214]
-WARNING: [Synth 8-614] signal 'rgb_in' is read in the process but is not in the sensitivity list [rtl/MouseDisplay.vhd:214]
-WARNING: [Synth 8-6014] Unused sequential element set_x.inc_reg was removed.  [rtl/MouseCtl.vhd:450]
-WARNING: [Synth 8-6014] Unused sequential element set_x.x_inter_reg was removed.  [rtl/MouseCtl.vhd:456]
-WARNING: [Synth 8-6014] Unused sequential element set_y.inc_reg was removed.  [rtl/MouseCtl.vhd:514]
-WARNING: [Synth 8-6014] Unused sequential element set_y.y_inter_reg was removed.  [rtl/MouseCtl.vhd:520]
 WARNING: [Synth 8-7129] Port vga_in\.rgb[11] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_in\.rgb[10] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_in\.rgb[9] in module draw_bg is either unconnected or has no load
