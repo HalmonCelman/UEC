@@ -16,12 +16,16 @@
 
 module top_vga (
     input  logic clk,
+    input  logic clk100MHz,
     input  logic rst,
     output logic vs,
     output logic hs,
     output logic [3:0] r,
     output logic [3:0] g,
-    output logic [3:0] b
+    output logic [3:0] b,
+
+    inout logic ps2_clk,
+    inout logic ps2_data
 );
 
 
@@ -39,6 +43,8 @@ assign vs = vga_rect.vsync;
 assign hs = vga_rect.hsync;
 assign {r,g,b} = vga_rect.rgb;
 
+wire [11:0] xpos;
+wire [11:0] ypos;
 
 /**
  * Submodules instances
@@ -62,8 +68,20 @@ draw_rect u_draw_rect (
     .clk,
     .rst,
 
+    .x(xpos),
+    .y(ypos),
+    
     .vga_in(vga_bg),
     .vga_out(vga_rect)
+);
+
+MouseCtl u_MouseCtl (
+    .clk(clk100MHz),
+    .rst,
+    .ps2_clk,
+    .ps2_data,
+    .xpos,
+    .ypos
 );
 
 endmodule

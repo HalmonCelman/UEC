@@ -12,16 +12,17 @@
 
  module draw_rect 
 #(
-    parameter X = 200,
-    parameter Y = 100,
     parameter W = 400,
     parameter H = 400,
     parameter COLOR = 12'hF00
 )
 (
-    input  logic clk,
-    input  logic rst,
- 
+    input logic clk,
+    input logic rst,
+
+    input logic [11:0] x,
+    input logic [11:0] y, 
+    
     vga_if.in vga_in,    
     vga_if.out vga_out 
 );
@@ -49,10 +50,10 @@ logic [11:0] rgb_nxt;
 end
  
 always_comb begin
-    if(vga_in.hcount >= X
-    && vga_in.hcount < X+W
-    && vga_in.vcount >= Y
-    && vga_in.vcount < Y+H ) begin 
+    if(vga_in.hcount >= x
+    && vga_in.hcount < x+W
+    && vga_in.vcount >= y
+    && vga_in.vcount < y+H ) begin 
         rgb_nxt = COLOR;
     end else begin
         rgb_nxt = vga_in.rgb;

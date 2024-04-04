@@ -30,13 +30,13 @@ module top_vga_tb;
  */
 
 localparam CLK_PERIOD = 25;     // 40 MHz
-
+localparam CLK_PERIOD_2 = 10;     // 100 MHz
 
 /**
  * Local variables and signals
  */
 
-logic clk, rst;
+logic clk, clk100MHz, rst;
 wire vs, hs;
 wire [3:0] r, g, b;
 
@@ -50,19 +50,25 @@ initial begin
     forever #(CLK_PERIOD/2) clk = ~clk;
 end
 
+initial begin
+    clk100MHz = 1'b0;
+    forever #(CLK_PERIOD_2/2) clk100MHz = ~clk100MHz;
+end
+
 
 /**
  * Submodules instances
  */
 
 top_vga dut (
-    .clk(clk),
-    .rst(rst),
-    .vs(vs),
-    .hs(hs),
-    .r(r),
-    .g(g),
-    .b(b)
+    .clk,
+    .clk100MHz,
+    .rst,
+    .vs,
+    .hs,
+    .r,
+    .g,
+    .b
 );
 
 tiff_writer #(

@@ -23,3 +23,6 @@ sv work ../../rtl/vga_pkg.sv \
 verilog work ../common/glbl.v \
         ../../fpga/rtl/clk_wiz_0.v \
         ../../fpga/rtl/clk_wiz_0_clk_wiz.v
+
+vhdl work ../../rtl/MouseCtl.vhd \
+          ../../rtl/Ps2Interface.vhd 
