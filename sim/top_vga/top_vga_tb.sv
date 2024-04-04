@@ -68,7 +68,9 @@ top_vga dut (
     .hs,
     .r,
     .g,
-    .b
+    .b,
+    .ps2_clk(),
+    .ps2_data()
 );
 
 tiff_writer #(

@@ -33,18 +33,30 @@ module top_vga (
  * Local variables and signals
  */
 
-// VGA signals from background timing and rect
-vga_if vga_tim(), vga_bg(), vga_rect();
+// VGA signals from background timing, rect, and mouse
+vga_if vga_tim(), vga_bg(), vga_rect(), vga_mouse();
 /**
  * Signals assignments
  */
 
-assign vs = vga_rect.vsync;
-assign hs = vga_rect.hsync;
-assign {r,g,b} = vga_rect.rgb;
+assign vs = vga_mouse.vsync;
+assign hs = vga_mouse.hsync;
+assign {r,g,b} = vga_mouse.rgb;
 
-wire [11:0] xpos;
-wire [11:0] ypos;
+logic [11:0] xpos;
+logic [11:0] ypos;
+logic [11:0] xpos_nxt;
+logic [11:0] ypos_nxt;
+
+always_ff @(posedge clk) begin
+    if(rst) begin
+        xpos <= '0;
+        ypos <= '0;
+    end else begin
+        xpos <= xpos_nxt;
+        ypos <= ypos_nxt;
+    end
+end
 
 /**
  * Submodules instances
@@ -70,9 +82,20 @@ draw_rect u_draw_rect (
 
     .x(xpos),
     .y(ypos),
-    
+
     .vga_in(vga_bg),
     .vga_out(vga_rect)
+);
+
+draw_mouse u_draw_mouse (
+    .clk,
+    .rst,
+
+    .x(xpos),
+    .y(ypos),
+    
+    .vga_in(vga_rect),
+    .vga_out(vga_mouse)
 );
 
 MouseCtl u_MouseCtl (
@@ -80,8 +103,19 @@ MouseCtl u_MouseCtl (
     .rst,
     .ps2_clk,
     .ps2_data,
-    .xpos,
-    .ypos
+    .xpos(xpos_nxt),
+    .ypos(ypos_nxt),
+
+    .zpos(),
+    .value(),
+    .left(),
+    .middle(),
+    .right(),
+    .setx(),
+    .sety(),
+    .setmax_x(),
+    .setmax_y(),
+    .new_event()
 );
 
 endmodule
