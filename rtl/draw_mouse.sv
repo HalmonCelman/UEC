@@ -4,7 +4,7 @@
  * Author: KK
  *
  * Description:
- * Draw rect.
+ * Draw mouse icon.
  */
 
 

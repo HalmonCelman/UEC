@@ -64,7 +64,9 @@ top_vga_basys3 dut (
     .vgaRed(r),
     .vgaGreen(g),
     .vgaBlue(b),
-    .JA1(pclk)
+    .JA1(pclk),
+    .PS2Clk(),
+    .PS2Data()
 );
 
 tiff_writer #(

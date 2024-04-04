@@ -194,7 +194,7 @@ begin
    end process;
 
    -- set enable_mouse_display high if vga counters inside cursor block
-   enable_mouse: process(hcount, vcount, xpos, ypos, mousepixel, blank)
+   enable_mouse: process(hcount, vcount, xpos, ypos, mousepixel)
    begin
       if(hcount >= xpos and hcount < (xpos + OFFSET) and
          vcount >= ypos and vcount < (ypos + OFFSET)) and
@@ -211,7 +211,7 @@ begin
 
    -- if cursor display is enabled, then, according to pixel
    -- value, set the output color channels.
-   rgb : process(enable_mouse_display, mousepixel)
+   rgb : process(enable_mouse_display, mousepixel, blank, rgb_in)
    begin
          -- if in visible screen
          -- (if used, add blank to the sensitivity list)
