@@ -1,9 +1,15 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-04-03 19:06:51
+Created: 2024-04-04 15:34:46
 
 ----SYNTHESIS----
 WARNING: [Synth 8-3848] Net vga\.rgb in module/entity vga_timing does not have driver. [rtl/vga_timing.sv:15]
+WARNING: [Synth 8-614] signal 'blank' is read in the process but is not in the sensitivity list [rtl/MouseDisplay.vhd:214]
+WARNING: [Synth 8-614] signal 'rgb_in' is read in the process but is not in the sensitivity list [rtl/MouseDisplay.vhd:214]
+WARNING: [Synth 8-6014] Unused sequential element set_x.inc_reg was removed.  [rtl/MouseCtl.vhd:450]
+WARNING: [Synth 8-6014] Unused sequential element set_x.x_inter_reg was removed.  [rtl/MouseCtl.vhd:456]
+WARNING: [Synth 8-6014] Unused sequential element set_y.inc_reg was removed.  [rtl/MouseCtl.vhd:514]
+WARNING: [Synth 8-6014] Unused sequential element set_y.y_inter_reg was removed.  [rtl/MouseCtl.vhd:520]
 WARNING: [Synth 8-7129] Port vga_in\.rgb[11] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_in\.rgb[10] in module draw_bg is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga_in\.rgb[9] in module draw_bg is either unconnected or has no load
@@ -29,6 +35,30 @@ WARNING: [Synth 8-7129] Port vga\.rgb[2] in module vga_timing is either unconnec
 WARNING: [Synth 8-7129] Port vga\.rgb[1] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7129] Port vga\.rgb[0] in module vga_timing is either unconnected or has no load
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-7129] Port vga_in\.rgb[11] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[10] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[9] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[8] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[7] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[6] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[5] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[4] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[3] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[2] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[1] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga_in\.rgb[0] in module draw_bg is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[11] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[10] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[9] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[8] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[7] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[6] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[5] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[4] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[3] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[2] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[1] in module vga_timing is either unconnected or has no load
+WARNING: [Synth 8-7129] Port vga\.rgb[0] in module vga_timing is either unconnected or has no load
 
 ----IMPLEMENTATION----
 WARNING: [DRC DPIP-1] Input pipelining: DSP u_top_vga/u_draw_bg/circle0_return2 input u_top_vga/u_draw_bg/circle0_return2/A[29:0] is not pipelined. Pipelining DSP48 input will improve performance.
