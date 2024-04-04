@@ -12,8 +12,8 @@
 
  module draw_rect 
 #(
-    parameter W = 400,
-    parameter H = 400,
+    parameter W = 100,
+    parameter H = 100,
     parameter COLOR = 12'hF00
 )
 (

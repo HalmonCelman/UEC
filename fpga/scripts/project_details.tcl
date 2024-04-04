@@ -33,13 +33,14 @@ set xdc_files {
 
 # Specify SystemVerilog design files location   -- EDIT
 set sv_files {
-    ../rtl/vga_pkg.sv
-    ../rtl/vga_if.sv
-    ../rtl/vga_timing.sv
-    ../rtl/draw_bg.sv
-    ../rtl/draw_rect.sv
     ../rtl/top_vga.sv
-    ../rtl/draw_mouse.sv
+    ../rtl/vga/vga_pkg.sv
+    ../rtl/vga/vga_if.sv
+    ../rtl/vga/vga_timing.sv
+    ../rtl/draw_element/draw_bg.sv
+    ../rtl/draw_element/draw_rect.sv
+    ../rtl/draw_element/draw_mouse.sv
+    ../rtl/mouse/mouse_control.sv
     rtl/top_vga_basys3.sv
 }
 
@@ -51,9 +52,9 @@ set sv_files {
 
 # Specify VHDL design files location            -- EDIT
  set vhdl_files {
-    ../rtl/MouseCtl.vhd
-    ../rtl/MouseDisplay.vhd
-    ../rtl/Ps2Interface.vhd
+    ../rtl/mouse/MouseCtl.vhd
+    ../rtl/mouse/MouseDisplay.vhd
+    ../rtl/mouse/Ps2Interface.vhd
  }
 
 # Specify files for a memory initialization     -- EDIT

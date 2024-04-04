@@ -42,21 +42,8 @@ vga_if vga_tim(), vga_bg(), vga_rect(), vga_mouse();
 assign vs = vga_mouse.vsync;
 assign hs = vga_mouse.hsync;
 assign {r,g,b} = vga_mouse.rgb;
-
-logic [11:0] xpos;
-logic [11:0] ypos;
-logic [11:0] xpos_nxt;
-logic [11:0] ypos_nxt;
-
-always_ff @(posedge clk) begin
-    if(rst) begin
-        xpos <= '0;
-        ypos <= '0;
-    end else begin
-        xpos <= xpos_nxt;
-        ypos <= ypos_nxt;
-    end
-end
+logic [11:0] x;
+logic [11:0] y;
 
 /**
  * Submodules instances
@@ -71,7 +58,6 @@ vga_timing u_vga_timing (
 draw_bg u_draw_bg (
     .clk,
     .rst,
-
     .vga_in(vga_tim),
     .vga_out(vga_bg)
 );
@@ -79,10 +65,8 @@ draw_bg u_draw_bg (
 draw_rect u_draw_rect (
     .clk,
     .rst,
-
-    .x(xpos),
-    .y(ypos),
-
+    .x,
+    .y,
     .vga_in(vga_bg),
     .vga_out(vga_rect)
 );
@@ -90,32 +74,20 @@ draw_rect u_draw_rect (
 draw_mouse u_draw_mouse (
     .clk,
     .rst,
-
-    .x(xpos),
-    .y(ypos),
-    
+    .x,
+    .y,
     .vga_in(vga_rect),
     .vga_out(vga_mouse)
 );
 
-MouseCtl u_MouseCtl (
-    .clk(clk100MHz),
+mouse_control u_mouse_control(
+    .clk100MHz,
+    .clk40MHz(clk),
     .rst,
     .ps2_clk,
     .ps2_data,
-    .xpos(xpos_nxt),
-    .ypos(ypos_nxt),
-
-    .zpos(),
-    .value(),
-    .left(),
-    .middle(),
-    .right(),
-    .setx(),
-    .sety(),
-    .setmax_x(),
-    .setmax_y(),
-    .new_event()
+    .x,
+    .y
 );
 
 endmodule
