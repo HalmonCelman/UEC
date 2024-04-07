@@ -41,6 +41,7 @@ set sv_files {
     ../rtl/draw_element/draw_rect.sv
     ../rtl/draw_element/draw_mouse.sv
     ../rtl/mouse/mouse_control.sv
+    ../rtl/rom/image_rom.sv
     rtl/top_vga_basys3.sv
 }
 

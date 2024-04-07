@@ -45,6 +45,9 @@ assign {r,g,b} = vga_mouse.rgb;
 logic [11:0] x;
 logic [11:0] y;
 
+logic [11:0] pixel_addr;
+logic [11:0] rgb_pixel;
+
 /**
  * Submodules instances
  */
@@ -62,11 +65,19 @@ draw_bg u_draw_bg (
     .vga_out(vga_bg)
 );
 
+image_rom u_image_rom(
+    .clk,
+    .address(pixel_addr),
+    .rgb(rgb_pixel)
+);
+
 draw_rect u_draw_rect (
     .clk,
     .rst,
     .x,
     .y,
+    .pixel_addr,
+    .rgb_pixel,
     .vga_in(vga_bg),
     .vga_out(vga_rect)
 );

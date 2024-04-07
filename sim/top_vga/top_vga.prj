@@ -16,6 +16,7 @@ sv work ../../rtl/top_vga.sv \
         ../../rtl/draw_element/draw_bg.sv \
         ../../rtl/draw_element/draw_rect.sv \
         ../../rtl/draw_element/draw_mouse.sv \
+        ../../rtl/rom/image_rom.sv \
         ../../rtl/mouse/mouse_control.sv \
         ../common/tiff_writer.sv \
         top_vga_tb.sv

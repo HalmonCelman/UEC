@@ -1,6 +1,6 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-04-04 19:01:53
+Created: 2024-04-07 18:36:39
 
 ----SYNTHESIS----
 WARNING: [Synth 8-3848] Net vga\.rgb in module/entity vga_timing does not have driver. [rtl/vga/vga_timing.sv:15]
