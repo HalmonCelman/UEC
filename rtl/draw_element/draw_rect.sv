@@ -12,7 +12,7 @@
 
  module draw_rect 
 #(
-    parameter W = 48,
+    parameter W = 50,
     parameter H = 64,
     parameter COLOR = 12'hF00
 )
@@ -33,7 +33,7 @@
 logic [11:0] rgb_nxt;
 logic [11:0] pixel_addr_nxt;
 
-localparam DELAY=2;
+localparam DELAY=1;
 
 logic [10:0] [DELAY:0] hcount_d;
 logic [10:0] [DELAY:0] vcount_d;
@@ -42,7 +42,7 @@ logic [DELAY:0] vblnk_d;
 logic [DELAY:0] hsync_d;
 logic [DELAY:0] vsync_d;
  
- always_ff @(posedge clk) begin
+always_ff @(posedge clk) begin
     if (rst) begin
         vga_out.vcount <= '0;
         vga_out.vsync  <= '0;
