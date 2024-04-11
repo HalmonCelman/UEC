@@ -13,8 +13,7 @@
  module draw_rect 
 #(
     parameter W = 48,
-    parameter H = 64,
-    parameter COLOR = 12'hF00
+    parameter H = 64
 )
 (
     input logic clk,

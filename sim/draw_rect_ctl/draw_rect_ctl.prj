@@ -1,0 +1,4 @@
+#by KK
+
+sv work ../../rtl/draw_element/draw_rect_ctl.sv \
+        draw_rect_ctl_tb.sv

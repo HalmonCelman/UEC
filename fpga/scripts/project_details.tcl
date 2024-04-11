@@ -39,6 +39,7 @@ set sv_files {
     ../rtl/vga/vga_timing.sv
     ../rtl/draw_element/draw_bg.sv
     ../rtl/draw_element/draw_rect.sv
+    ../rtl/draw_element/draw_rect_ctl.sv
     ../rtl/draw_element/draw_mouse.sv
     ../rtl/mouse/mouse_control.sv
     ../rtl/rom/image_rom.sv

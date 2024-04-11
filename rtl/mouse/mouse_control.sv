@@ -4,6 +4,7 @@ module mouse_control(
     input logic rst,
     inout logic ps2_clk,
     inout logic ps2_data,
+    output logic left,
     output logic [11:0] x,
     output logic [11:0] y
 );
@@ -21,7 +22,7 @@ MouseCtl u_MouseCtl (
 
     .zpos(),
     .value(),
-    .left(),
+    .left,
     .middle(),
     .right(),
     .setx(),

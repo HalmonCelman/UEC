@@ -45,6 +45,9 @@ assign {r,g,b} = vga_mouse.rgb;
 logic [11:0] x;
 logic [11:0] y;
 
+logic [11:0] mouse_x, mouse_y;
+logic mouse_left;
+
 logic [11:0] pixel_addr;
 logic [11:0] rgb_pixel;
 
@@ -82,11 +85,21 @@ draw_rect u_draw_rect (
     .vga_out(vga_rect)
 );
 
+draw_rect_ctl u_draw_rect_ctl (
+    .clk,
+    .rst,
+    .mouse_left(mouse_left),
+    .mouse_xpos(mouse_x),
+    .mouse_ypos(mouse_y),
+    .xpos(x),
+    .ypos(y)
+);
+
 draw_mouse u_draw_mouse (
     .clk,
     .rst,
-    .x,
-    .y,
+    .x(mouse_x),
+    .y(mouse_y),
     .vga_in(vga_rect),
     .vga_out(vga_mouse)
 );
@@ -94,11 +107,12 @@ draw_mouse u_draw_mouse (
 mouse_control u_mouse_control(
     .clk100MHz,
     .clk40MHz(clk),
+    .left(mouse_left),
     .rst,
     .ps2_clk,
     .ps2_data,
-    .x,
-    .y
+    .x(mouse_x),
+    .y(mouse_y)
 );
 
 endmodule
