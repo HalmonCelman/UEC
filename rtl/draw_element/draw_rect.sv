@@ -12,7 +12,7 @@
 
  module draw_rect 
 #(
-    parameter W = 50,
+    parameter W = 48,
     parameter H = 64,
     parameter COLOR = 12'hF00
 )
@@ -41,6 +41,8 @@ logic [DELAY:0] hblnk_d;
 logic [DELAY:0] vblnk_d;
 logic [DELAY:0] hsync_d;
 logic [DELAY:0] vsync_d;
+
+logic [1:0] [11:0] rgb_d;
  
 always_ff @(posedge clk) begin
     if (rst) begin
@@ -52,6 +54,15 @@ always_ff @(posedge clk) begin
         vga_out.hblnk  <= '0;
         vga_out.rgb    <= '0;
         pixel_addr     <= '0;
+
+        hcount_d       <= '0;
+        vcount_d       <= '0;
+        hblnk_d        <= '0;
+        vblnk_d        <= '0;
+        hsync_d        <= '0;
+        vsync_d        <= '0;
+
+        rgb_d          <= '0;
     end else begin
         {vga_out.hcount, hcount_d} <= {hcount_d, vga_in.hcount}; 
         {vga_out.vcount, vcount_d} <= {vcount_d, vga_in.vcount};
@@ -59,8 +70,12 @@ always_ff @(posedge clk) begin
         {vga_out.vblnk, vblnk_d} <= {vblnk_d, vga_in.vblnk};
         {vga_out.hsync, hsync_d} <= {hsync_d, vga_in.hsync};
         {vga_out.vsync, vsync_d} <= {vsync_d, vga_in.vsync};    
+
         vga_out.rgb    <= rgb_nxt;
         pixel_addr     <= pixel_addr_nxt;
+
+        rgb_d[0] <= vga_in.rgb;
+        rgb_d[1] <= rgb_d[0];
     end
 end
  
@@ -70,10 +85,17 @@ always_comb begin
     && vga_in.vcount >= y
     && vga_in.vcount < y+H ) begin
         pixel_addr_nxt = {6'(vga_in.vcount - y), 6'(vga_in.hcount - x)};
-        rgb_nxt = rgb_pixel;
     end else begin
         pixel_addr_nxt = '0;
-        rgb_nxt = vga_in.rgb;
+    end
+
+    if(vga_in.hcount > x+1
+    && vga_in.hcount <= x+W+1
+    && vga_in.vcount >= y
+    && vga_in.vcount < y+H ) begin
+        rgb_nxt = rgb_pixel;
+    end else begin
+        rgb_nxt = rgb_d[1];
     end
 end
  
