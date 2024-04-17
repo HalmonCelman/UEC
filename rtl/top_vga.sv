@@ -74,7 +74,12 @@ image_rom u_image_rom(
     .rgb(rgb_pixel)
 );
 
-draw_rect u_draw_rect (
+import rect_pkg::*;
+
+draw_rect#(
+    .H(RECT_HEIGHT),
+    .W(RECT_WIDTH)
+) u_draw_rect (
     .clk,
     .rst,
     .x,
