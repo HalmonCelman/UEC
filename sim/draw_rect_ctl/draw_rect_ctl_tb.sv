@@ -29,22 +29,30 @@
     .xpos,
     .ypos
  );
- 
+
+ draw_rect_ctl_test u_draw_rect_ctl_test (
+    .rst,
+    .mouse_left,
+    .mouse_xpos,
+    .mouse_ypos
+ );
+
+
  /**
   * Main test
   */
  
  initial begin
      rst = 1'b0;
-     mouse_left = 1'b0;
-     mouse_xpos = 15;
-     mouse_ypos = 15;
      $display("starting simulation");
+
      # 30 rst = 1'b1;
      # 30 rst = 1'b0;
     
-     # 100 mouse_left = 1'b1;
-     
+     wait(ypos > 500);
+     wait(ypos < 200);
+     wait(ypos < 500);
+
      $finish;
  end
  
