@@ -98,7 +98,7 @@ always_comb begin
         GO_DOWN: begin
             if(mouse_pressed) begin
                 state_nxt = MOUSE;
-            end else if(ypos + dy >= VER_PIXELS - RECT_HEIGHT) begin    // bounce if too low
+            end else if(ypos >= VER_PIXELS - RECT_HEIGHT) begin    // bounce if too low
                 state_nxt = GO_UP;
             end else begin
                 state_nxt = GO_DOWN;
@@ -137,7 +137,11 @@ always_comb begin
                 ypos_nxt = ypos - dy;
 
                 if(very_slow_ctr == clock_divide_second_ctr) begin
-                    dy_nxt = dy - DVY;
+                    if(dy) begin
+                        dy_nxt = dy - DVY;
+                    end else begin
+                        dy_nxt = '0;
+                    end
                 end else begin
                     dy_nxt = dy;
                 end

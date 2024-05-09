@@ -15,7 +15,7 @@
 
      mouse_left = '0;
      mouse_xpos = '0;
-     mouse_ypos = 400;
+     mouse_ypos = 500;
 
      @(negedge rst);
 

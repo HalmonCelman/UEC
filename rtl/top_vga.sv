@@ -34,14 +34,14 @@ module top_vga (
  */
 
 // VGA signals from background timing, rect, and mouse
-vga_if vga_tim(), vga_bg(), vga_rect(), vga_mouse();
+vga_if vga_tim(), vga_bg(), vga_rect(), vga_mouse(), vga_rect_char();
 /**
  * Signals assignments
  */
 
-assign vs = vga_mouse.vsync;
-assign hs = vga_mouse.hsync;
-assign {r,g,b} = vga_mouse.rgb;
+assign vs = vga_rect_char.vsync;
+assign hs = vga_rect_char.hsync;
+assign {r,g,b} = vga_rect_char.rgb;
 logic [11:0] x;
 logic [11:0] y;
 
@@ -50,6 +50,11 @@ logic mouse_left;
 
 logic [11:0] pixel_addr;
 logic [11:0] rgb_pixel;
+
+logic [7:0] char_xy;
+logic [3:0] char_line;
+logic [6:0] char_code;
+logic [7:0] char_pixels;
 
 /**
  * Submodules instances
@@ -107,6 +112,32 @@ draw_mouse u_draw_mouse (
     .y(mouse_y),
     .vga_in(vga_rect),
     .vga_out(vga_mouse)
+);
+
+draw_rect_char #(
+    .X(200),
+    .Y(50)
+) u_draw_rect_char (
+    .clk,
+    .rst,
+    .vga_in(vga_mouse),
+    .vga_out(vga_rect_char),
+
+    .char_line,
+    .char_xy,
+    .char_pixels
+);
+
+font_rom u_font_rom (
+    .clk,
+    .addr({char_code, char_line}),
+    .char_line_pixels(char_pixels)
+);
+
+char_rom_16x16 u_char_rom_16x16 (
+    .clk,
+    .char_code,
+    .char_xy
 );
 
 mouse_control u_mouse_control(
