@@ -1,7 +1,0 @@
-#by KK
-
-sv work ../../rtl/pkg/vga_pkg.sv \
-        ../../rtl/pkg/rect_pkg.sv \
-        ../../rtl/draw_element/draw_rect_ctl.sv \
-        draw_rect_ctl_tb.sv \
-        draw_rect_ctl_test.sv
