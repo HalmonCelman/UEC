@@ -40,6 +40,7 @@ set verilog_files {
     ../rtl/utils/debounce.v
     ../rtl/utils/fifo.v
     ../rtl/utils/mod_m_counter.v
+    ../rtl/7seg/disp_hex_mux.v
     ../rtl/uart/flag_buf.v
     ../rtl/uart/uart_rx.v
     ../rtl/uart/uart_tx.v

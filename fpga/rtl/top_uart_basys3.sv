@@ -7,8 +7,14 @@ module top_vga_basys3 (
     input wire rst,
     input  wire rx,
     input  wire sendBtn,
-    output logic tx
+    output logic tx,
+    output logic [3:0] an,
+    output logic [6:0] seg,
+    output logic dp
 );
+
+(* KEEP = "TRUE" *)
+(* ASYNC_REG = "TRUE" *)
 
 logic clk50MHz;
 
@@ -26,7 +32,10 @@ top_uart u_top_uart(
     .rst,
     .rx,
     .sendBtn,
-    .tx
+    .tx,
+    .an,
+    .seg,
+    .dp
 );
 
 endmodule

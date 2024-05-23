@@ -1,9 +1,10 @@
 Warnings, critical warnings and errors from synthesis and implementation
 
-Created: 2024-05-23 14:11:11
+Created: 2024-05-23 15:11:47
 
 ----SYNTHESIS----
 WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
+WARNING: [Synth 8-5396] Clock pin WCLK has keep related attribute (keep/mark_debug/dont_touch) which could create extra logic on its net [fpga/rtl/top_uart_basys3.sv:5]
 
 ----IMPLEMENTATION----
 CLEAR :)
