@@ -4,23 +4,37 @@
 
 module top_uart (
     input  wire clk,
+    input wire rst,
     input  wire rx,
-    input  wire loopback_enable,
-    output logic tx,
-    output logic rx_monitor,
-    output logic tx_monitor
+    input  wire sendBtn,
+    output logic tx
 );
 
 (* KEEP = "TRUE" *)
 (* ASYNC_REG = "TRUE" *)
 
-uart_monitor u_uart_monitor(
+logic buttonTick;
+logic [7:0] rec_data;
+
+uart u_uart(
     .clk,
+    .reset(rst),
+    .rd_uart(buttonTick),
+    .wr_uart(buttonTick),
     .rx,
-    .loopback_enable,
+    .w_data(rec_data),
+    .tx_full(),
+    .rx_empty(),
     .tx,
-    .rx_monitor,
-    .tx_monitor
+    .r_data(rec_data)
+);
+
+debounce u_debounce(
+    .clk,
+    .reset(rst),
+    .sw(sendBtn),
+    .db_level(),
+    .db_tick(buttonTick)
 );
 
 endmodule

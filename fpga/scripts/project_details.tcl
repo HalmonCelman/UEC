@@ -32,13 +32,19 @@ set xdc_files {
 # Specify SystemVerilog design files location   -- EDIT
 set sv_files {
     ../rtl/top_uart.sv
-    ../rtl/uart/uart_monitor.sv
     rtl/top_uart_basys3.sv
 }
 
 # Specify Verilog design files location         -- EDIT
- #set verilog_files {
- #}
+set verilog_files {
+    ../rtl/utils/debounce.v
+    ../rtl/utils/fifo.v
+    ../rtl/utils/mod_m_counter.v
+    ../rtl/uart/flag_buf.v
+    ../rtl/uart/uart_rx.v
+    ../rtl/uart/uart_tx.v
+    ../rtl/uart/uart.v
+}
 
 # Specify VHDL design files location            -- EDIT
  #set vhdl_files {
