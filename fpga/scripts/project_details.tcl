@@ -32,6 +32,7 @@ set xdc_files {
 # Specify SystemVerilog design files location   -- EDIT
 set sv_files {
     ../rtl/top_uart.sv
+    ../rtl/7seg/make_numbers.sv
     rtl/top_uart_basys3.sv
 }
 

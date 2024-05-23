@@ -1,15 +1,16 @@
 module make_numbers(
     input wire clk,
     input wire rst,
-    input wire data_in,
+    input logic [7:0] data_in,
     input wire rx_empty,
 
-    output logic char1,
-    output logic char2,
+    output logic [7:0] char1,
+    output logic [7:0] char2,
     output logic readByte
 );
 
-logic readByte_nxt, char1_nxt, char2_nxt;
+logic readByte_nxt;
+logic [7:0] char1_nxt, char2_nxt;
 
 always_ff @(posedge clk) begin
     if(rst) begin
