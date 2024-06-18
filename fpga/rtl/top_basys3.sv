@@ -2,7 +2,7 @@
 
 `timescale 1 ns / 1 ps
 
-module top_vga_basys3 (
+module top_basys3 (
     input  wire clk,
     input wire rst,
     input  wire rx,
@@ -27,7 +27,7 @@ always_ff @(posedge clk) begin
     end
 end
 
-top_uart u_top_uart(
+top u_top(
     .clk(clk50MHz),
     .rst,
     .rx,

@@ -1,0 +1,16 @@
+# by KK
+
+sv work         ../../rtl/micro/commands_pkg.sv \
+                ../../rtl/micro/decode.sv \
+                micro_tb.sv
+
+verilog work    ../../rtl/micro/adder.v \
+                ../../rtl/micro/alu.v \
+                ../../rtl/micro/branch_ctl.v \
+                ../../rtl/micro/control_unit.v \
+                ../../rtl/micro/flopenr.v \
+                ../../rtl/micro/flopr.v \
+                ../../rtl/micro/micro.v \
+                ../../rtl/micro/mux2.v \
+                ../../rtl/micro/regfile.v \
+                ../../rtl/micro/imem.v

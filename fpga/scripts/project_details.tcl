@@ -13,10 +13,10 @@
 #                   Project details                   #
 #-----------------------------------------------------#
 # Project name                                  -- EDIT
-set project_name uart_project
+set project_name UEC2
 
 # Top module name                               -- EDIT
-set top_module top_uart_basys3
+set top_module top_basys3
 
 # FPGA device
 set target xc7a35tcpg236-1
@@ -26,14 +26,14 @@ set target xc7a35tcpg236-1
 #-----------------------------------------------------#
 # Specify .xdc files location                   -- EDIT
 set xdc_files {
-    constraints/top_uart_basys3.xdc
+    constraints/top_basys3.xdc
 }
 
 # Specify SystemVerilog design files location   -- EDIT
 set sv_files {
-    ../rtl/top_uart.sv
+    ../rtl/top.sv
     ../rtl/7seg/make_numbers.sv
-    rtl/top_uart_basys3.sv
+    rtl/top_basys3.sv
 }
 
 # Specify Verilog design files location         -- EDIT
