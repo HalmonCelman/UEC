@@ -6,21 +6,21 @@
 ## Clock signal
 set_property PACKAGE_PIN W5 [get_ports clk]
 	set_property IOSTANDARD LVCMOS33 [get_ports clk]
-	create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
+#	create_clock -add -name sys_clk_pin -period 10.00 -waveform {0 5} [get_ports clk]
 
 ## Switches
-#set_property PACKAGE_PIN V17 [get_ports {sw[0]}] 
-	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[0]}]
-#set_property PACKAGE_PIN V16 [get_ports {sw[1]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[1]}]
-#set_property PACKAGE_PIN W16 [get_ports {sw[2]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[2]}]
-#set_property PACKAGE_PIN W17 [get_ports {sw[3]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[3]}]
-#set_property PACKAGE_PIN W15 [get_ports {sw[4]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[4]}]
-#set_property PACKAGE_PIN V15 [get_ports {sw[5]}]
-	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[5]}]
+set_property PACKAGE_PIN V17 [get_ports {sw[0]}] 
+	set_property IOSTANDARD LVCMOS33 [get_ports {sw[0]}]
+set_property PACKAGE_PIN V16 [get_ports {sw[1]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {sw[1]}]
+set_property PACKAGE_PIN W16 [get_ports {sw[2]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {sw[2]}]
+set_property PACKAGE_PIN W17 [get_ports {sw[3]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {sw[3]}]
+set_property PACKAGE_PIN W15 [get_ports {sw[4]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {sw[4]}]
+set_property PACKAGE_PIN V15 [get_ports {sw[5]}]
+	set_property IOSTANDARD LVCMOS33 [get_ports {sw[5]}]
 #set_property PACKAGE_PIN W14 [get_ports {sw[6]}]
 	#set_property IOSTANDARD LVCMOS33 [get_ports {sw[6]}]
 #set_property PACKAGE_PIN W13 [get_ports {sw[7]}]
@@ -112,14 +112,16 @@ set_property PACKAGE_PIN W4 [get_ports {an[3]}]
 set_property PACKAGE_PIN U18 [get_ports rst]
 	set_property IOSTANDARD LVCMOS33 [get_ports rst]
 # default: btnU
-set_property PACKAGE_PIN T18 [get_ports sendBtn]
-	set_property IOSTANDARD LVCMOS33 [get_ports sendBtn]
-#set_property PACKAGE_PIN W19 [get_ports btnL]
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnL]
+set_property PACKAGE_PIN T18 [get_ports PCenBtn]
+	set_property IOSTANDARD LVCMOS33 [get_ports PCenBtn]
+# default: btnL
+set_property PACKAGE_PIN W19 [get_ports micRstBtn]
+	set_property IOSTANDARD LVCMOS33 [get_ports micRstBtn]
 #set_property PACKAGE_PIN T17 [get_ports btnR]
 	#set_property IOSTANDARD LVCMOS33 [get_ports btnR]
-#set_property PACKAGE_PIN U17 [get_ports btnD]
-	#set_property IOSTANDARD LVCMOS33 [get_ports btnD]
+# default: btnD
+set_property PACKAGE_PIN U17 [get_ports extCtlBtn]
+	set_property IOSTANDARD LVCMOS33 [get_ports extCtlBtn]
 
 
 
@@ -267,11 +269,11 @@ set_property PACKAGE_PIN T18 [get_ports sendBtn]
 
 ##USB-RS232 Interface
 # default: RsRx
-set_property PACKAGE_PIN B18 [get_ports rx]
-	set_property IOSTANDARD LVCMOS33 [get_ports rx]
+#set_property PACKAGE_PIN B18 [get_ports rx]
+#	set_property IOSTANDARD LVCMOS33 [get_ports rx]
 # default: RsTx
-set_property PACKAGE_PIN A18 [get_ports tx]
-	set_property IOSTANDARD LVCMOS33 [get_ports tx]
+#set_property PACKAGE_PIN A18 [get_ports tx]
+#	set_property IOSTANDARD LVCMOS33 [get_ports tx]
 
 
 ##USB HID (PS/2)
