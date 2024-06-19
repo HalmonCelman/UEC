@@ -8,6 +8,10 @@ module top_basys3 (
     input wire PCenBtn,
     input wire extCtlBtn,
     input wire micRstBtn,
+    
+    input wire rx,
+    output logic tx,
+
     input wire [5:0] sw,
     output logic [3:0] an,
     output logic [6:0] seg,
@@ -32,6 +36,8 @@ top u_top(
     .extCtlBtn,
     .micRstBtn,
     .ctrlBtns(sw),
+    .rx,
+    .tx,
     .an,
     .seg,
     .dp

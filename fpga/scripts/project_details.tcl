@@ -37,23 +37,30 @@ set sv_files {
     ../rtl/micro/commands_pkg.sv
     ../rtl/micro/decode.sv
     ../rtl/micro/microDebug.sv
+    ../rtl/uart/get_memory.sv
+    ../rtl/uart/make_numbers.sv
     ../rtl/top.sv
 }
 
 # Specify Verilog design files location         -- EDIT
 set verilog_files {
     ../rtl/7seg/disp_hex_mux.v
-    ../rtl/utils/debounce.v
     ../rtl/micro/adder.v
     ../rtl/micro/alu.v
     ../rtl/micro/branch_ctl.v
     ../rtl/micro/control_unit.v
     ../rtl/micro/flopenr.v
-    ../rtl/micro/flopr.v
     ../rtl/micro/imem.v
     ../rtl/micro/micro.v
     ../rtl/micro/mux2.v
     ../rtl/micro/regfile.v
+    ../rtl/uart/flag_buf.v
+    ../rtl/uart/uart_rx.v
+    ../rtl/uart/uart_tx.v
+    ../rtl/uart/uart.v
+    ../rtl/utils/debounce.v
+    ../rtl/utils/fifo.v
+    ../rtl/utils/mod_m_counter.v
     rtl/clk_wiz_0_clk_wiz.v
 }
 
