@@ -1,5 +1,19 @@
 # Led blinking program idea
 
+## **It seems that there is an error in specification of micro**
+
+- SUB command instead of:
+> R[WA]=R[RB]-R[RA]
+- is doing
+> R[WA] = R[RA] - R[RB]
+- example
+```
+# we want to substract R2 from R4
+1442 is correct form from specification
+BUT isn't working
+1424 works
+```
+
 1. **setup starting memory**
 ```
     LDA R2 1        # R2 holds 1
