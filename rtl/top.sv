@@ -6,6 +6,7 @@ module top (
     input wire clk,
     input wire rst,
     input wire PCenBtn,
+    input wire PCen,
     input wire extCtlBtn,
     input wire micRstBtn,
     input wire [5:0] ctrlBtns,
@@ -13,7 +14,8 @@ module top (
     output logic tx,
     output logic [3:0] an,
     output logic [6:0] seg,
-    output logic dp
+    output logic dp,
+    output logic led
 );
 
 logic [3:0][3:0] hex;
@@ -26,13 +28,15 @@ microDebug u_microDebug(
     .rst,
     .micRstBtn,
     .PCenBtn,
+    .PCen,
     .extCtlBtn,
     .iram_wa(w_addr),
     .iram_wen(w_en),
     .iram_din(w_data),
     .mode(ctrlBtns[1:0]),
     .register(ctrlBtns[5:2]),
-    .monitorValue(hex[0:3])
+    .monitorValue(hex[0:3]),
+    .bit0(led)
 );
 
 disp_hex_mux u_disp_hex_mux(

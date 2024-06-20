@@ -6,14 +6,16 @@ module microDebug
     input wire clk,
     input wire rst,
     input wire micRstBtn,
-    input wire PCenBtn,
+    input wire PCenBtn,    
+    input wire PCen,
     input wire extCtlBtn,
     input wire [IRAM_ADDR_BITS-1:0] iram_wa,
     input wire      iram_wen,
     input wire [WIDTH-1:0]   iram_din,
     input wire [1:0] mode,
     input wire [3:0] register,
-    output logic [15:0] monitorValue
+    output logic [15:0] monitorValue,
+    output logic bit0
 );
 
 logic PCenable, extCtl;
@@ -40,7 +42,7 @@ debounce u_dbext(
 micro u_micro(
     .clk,
     .reset(micRstBtn | rst),
-    .PCenable,
+    .PCenable(PCenable | PCen),
     .extCtl,
     .monRFSrc(register),
     .monRFData(data),
@@ -48,7 +50,8 @@ micro u_micro(
     .monPC(pc),
     .iram_wa,
     .iram_wen,
-    .iram_din
+    .iram_din,
+    .bit0
 );
 
 always_comb begin

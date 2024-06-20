@@ -12,7 +12,8 @@ module regfile #(parameter WIDTH = 16)
 	input  wire [3:0]         monitor_sel, // select the register for monitoring
 	output wire [WIDTH-1:0]   rd1,         // read data 1
 	output wire [WIDTH-1:0]   rd2,         // read data 2
-	output wire [WIDTH-1:0]   monitor_data // the contents of the monitored register
+	output wire [WIDTH-1:0]   monitor_data, // the contents of the monitored register
+	output wire bit0
 );
 
 reg [WIDTH-1:0] rf[15:0];
@@ -38,5 +39,5 @@ assign rd1          =  rf[ra1];
 assign rd2          =  rf[ra2];
 
 assign monitor_data = rf[monitor_sel];
-
+assign bit0 = rf[0][0];
 endmodule

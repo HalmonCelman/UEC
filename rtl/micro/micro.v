@@ -15,7 +15,8 @@ module micro
     input  wire [3:0]                  monRFSrc,  // select register for monitoring
     output wire [WIDTH-1:0]            monRFData, // contents of monitored register
     output wire [WIDTH-1:0]            monInstr,
-    output wire [2*IRAM_ADDR_BITS-1:0] monPC
+    output wire [2*IRAM_ADDR_BITS-1:0] monPC,
+    output wire bit0
 );
 //------------------------------------------------------------------------------
 
@@ -89,7 +90,8 @@ regfile #(
     .monitor_sel (monRFSrc), //select the register for monitoring
     .rd1 (ALU_a),            //read data 1
     .rd2 (ALU_b),            //read data 2
-    .monitor_data(monRFData) //the contents of the monitored register
+    .monitor_data(monRFData), //the contents of the monitored register
+    .bit0(bit0)
 );
 
 //------------------------------------------------------------------------------
