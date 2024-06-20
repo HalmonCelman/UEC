@@ -55,12 +55,13 @@ BUT isn't working
 > - setup outer loop: 2
 > - inside loop1: 2 for setup and 3 cycling(-1 for every x)
 > - 5 for sub and branch again(-1 at the end)
-> - 1 for nop(no solution without this)
-> formula: 4x+3yx+2 = 50M
-> possible soultions:
+> - 3 for returning to changing state of led (after delay)
+> - 1 for changing state (after delay)
+> formula: 4x+3xy+5 = 50M
+> possible solutions:
 ```
-x=10002 y=1665
-x=14997 y=1110 <- i've picked this one
+x=2151 y=7747  <- i've picked this one
+x=41841 y=397
 ```
 6. ctr--
 ```

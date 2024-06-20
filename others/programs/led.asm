@@ -6,17 +6,16 @@
     LDB R1 0
     BN0 0
     ADD R0 R0 R2
-    LDA R5 0x95
-    LDB R5 0x3A
-        LDA R4 0x56
-        LDB R4 0x04
+    LDA R5 0x67
+    LDB R5 0x08
+        LDA R4 0x43
+        LDB R4 0x1E
         SUB R4 R4 R2
         B1 2
         BR -2
     SUB R5 R5 R2
     B1 2
     BR -7
-    NOP
     SUB R1 R1 R2
-    B1 -16
-    BR -14
+    B1 -15
+    BR -13
